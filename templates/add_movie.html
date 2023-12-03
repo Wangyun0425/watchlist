@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="add-movie-form">
+        <h2>添加新电影</h2>
+        <form action="{{ url_for('add_movie') }}" method="post">
+            <div>
+                <label for="movie_name">电影名称:</label>
+                <input type="text" id="movie_name" name="movie_name" required>
+            </div>
+            <div>
+                <label for="movie_year">上映年份:</label>
+                <input type="number" id="movie_year" name="movie_year" required>
+            </div>
+            <div>
+                <label for="release_date">上映日期:</label>
+                <input type="date" id="release_date" name="release_date" required>
+            </div>
+            <div>
+                <label for="country">国家:</label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <div>
+                <label for="genre">类型:</label>
+                <input type="text" id="genre" name="genre" required>
+            </div>
+            <div>
+                <label for="box_office">票房:</label>
+                <input type="number" id="box_office" name="box_office" step="0.01">
+            </div>
+            <!-- 新导演添加 -->
+            <div>
+                <label for="new_director_name">新导演姓名:</label>
+                <input type="text" id="new_director_name" name="new_director_name">
+                <label for="new_director_gender">性别:</label>
+                <select id="new_director_gender" name="new_director_gender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+                <label for="new_director_country">国籍:</label>
+                <input type="text" id="new_director_country" name="new_director_country">
+            </div>
+
+            <!-- 新主演添加 -->
+            <div>
+                <label for="new_actor_name">新主演姓名:</label>
+                <input type="text" id="new_actor_name" name="new_actor_name">
+                <label for="new_actor_gender">性别:</label>
+                <select id="new_actor_gender" name="new_actor_gender">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+                <label for="new_actor_country">国籍:</label>
+                <input type="text" id="new_actor_country" name="new_actor_country">
+            </div>
+
+            <div>
+                <input type="submit" value="添加电影">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

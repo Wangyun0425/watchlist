@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{{ url_for('search_actors') }}" method="post">
+    <div>
+        <label for="actor_search">演员搜索:</label>
+        <input type="text" id="actor_search" name="actor_search" required>
+        <input type="submit" value="搜索">
+    </div>
+</form>
+
+<div>
+    {% for actor in actors %}
+    <div>
+        <h2>{{ actor.name }}</h2>
+        <p>国家: {{ actor.country }}</p>
+        <p>作为演员出演的电影:
+            {% for movie in actor.movies_as_actor %}
+            {{ movie.name }} ({{ movie.year }}),
+            {% endfor %}
+        </p>
+        <p>作为导演的电影:
+            {% for movie in actor.movies_as_director %}
+            {{ movie.name }} ({{ movie.year }}),
+            {% endfor %}
+        </p>
+    </div>
+    {% else %}
+    <p>没有找到相关演员。</p>
+    {% endfor %}
+</div>
+{% endblock %}

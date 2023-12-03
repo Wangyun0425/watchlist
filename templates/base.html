@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% block head %}
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ name }}'s Watchlist</title>
-<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
-{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Consider using a CDN for professional fonts and icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h2>
-<img alt="Avatar" class="avatar" src="{{ url_for('static', filename='images/wy.jpeg') }}">
-{{ name }}'s Watchlist
-</h2>
-<nav>
-<ul>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-</ul>
-</nav>
-{% block content %}{% endblock %}
-<footer>
-<small>&copy; 2018 <a href="http://helloflask.com/tutorial">HelloFlask</a></small>
-</footer>
+    <div class="container">
+        <header>
+            <h1>Movie Management System</h1>
+        </header>
+        <nav>
+            <!-- Navigation items if needed -->
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p>&copy; 2023 Movie Search. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

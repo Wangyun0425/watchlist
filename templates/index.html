@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<p>{{ movies|length }} Titles</p>
-<ul class="movie-list">
-{% for movie in movies %}
-<li>{{ movie.title }} - {{ movie.year }}
-<span class="float-right">
-<a class="imdb" href="https://www.imdb.com/find?q={{
-movie.title }}" target="_blank" title="Find this movie on IMDb">
-IMDb</a>
-</span>
-</li>
-{% endfor %}
-</ul>
-<img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/wy2.jpeg'|trim) }}" title="to~to~ro~">
+<div class="search-form">
+    <h2>Function One: Movie Add</h2>
+    <div class="add-movie-link">
+        <a href="{{ url_for('add_movie') }}" class="btn">Add New Movies</a>
+    </div>
+
+    <h2>Function Two: Movie Query</h2>
+    <form action="{{ url_for('search_movies') }}" method="post">
+        <input type="text" id="movie_search" name="movie_search" placeholder="Enter movie title" autofocus>
+        <button type="submit" class="btn">Search Movies</button>
+    </form>
+    <h2>Function Three: Actor Query</h2>
+    <form action="{{ url_for('search_actors') }}" method="post">
+        <input type="text" id="actor_search" name="actor_search" placeholder="Enter actor name">
+        <button type="submit" class="btn">Search Actors</button>
+    </form>
+    
+    <h2>Function Four: Box Office Analysis</h2>
+    <div class="box-office-analysis-link">
+        <a href="{{ url_for('box_office_analysis') }}" class="btn">Box Office Analysis</a>
+    </div>
+    
+    <h2>Function Five: View Movie List</h2>
+    <div class="view-movie-list-link">
+        <a href="{{ url_for('movie_list') }}" class="btn">View Movie List</a>
+    </div>
+</div>
 {% endblock %}
 

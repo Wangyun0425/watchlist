@@ -1,75 +1,434 @@
-
-/* 页面整体 */
-body {
-    margin: auto;
-    max-width: 580px;
-    font-size: 14px;
-    font-family: Helvetica, Arial, sans-serif;
-}
-/* 页脚 */
-footer {
-    color: #888;
-    margin-top: 15px;
-    text-align: center;
-    padding: 10px;
-}
-/* 头像 */
-.avatar {
-    width: 40px;
-}
-/* 电影列表 */
-.movie-list {
-    list-style-type: none;
+/* 基本设置 */
+body, html {
+    margin: 0;
     padding: 0;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4; /* 更柔和的背景色 */
+}
+
+/* 头部样式 */
+header {
+    background: #0056b3; /* 更柔和的蓝色 */
+    color: white;
+    padding: 0.5em 0; /* 减少填充 */
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0.5em 0; /* 减少外边距 */
+}
+
+/* 功能标题样式 */
+h2 {
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 0.5em; /* 减少外边距 */
+    margin-bottom: 0.5em; /* 减少外边距 */
+}
+
+/* 搜索表单样式 */
+.search-form {
+    max-width: 600px;
+    margin: 1em auto; /* 减少外边距 */
+    padding: 1em; /* 减少填充 */
+    background: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.search-form h2 {
+    margin-bottom: 0.5em; /* 减少外边距 */
+}
+
+/* 输入框样式 */
+input[type="text"] {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 0.5em; /* 减少外边距 */
+    border-radius: 5px;
+    border: 1px solid #ccc; /* 更轻的边框色 */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* 按钮样式 */
+.btn {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 0.5em; /* 减少外边距 */
+    color: white;
+    background: #007bff; /* 标准蓝色 */
+    border: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* 深蓝色 */
+}
+
+/* 页脚样式 */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0; /* 减少填充 */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 700px) {
+    .search-form {
+        padding: 1em;
+        width: 90%;
+    }
+    
+    .container {
+        padding: 0.5em;
+    }
+    
+    .btn, input[type="text"] {
+        width: 100%; /* 在移动设备上全
+/* style.css 或相应的 CSS 文件 */
+        
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.canvas-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    
+}
+
+
+/* 表单样式 */
+.add-movie-form {
+    background: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 2em auto;
+}
+
+.add-movie-form h2 {
+    text-align: center;
+    color: #0056b3;
+}
+
+.add-movie-form div {
+    margin-bottom: 1em;
+}
+
+.add-movie-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.add-movie-form input[type="text"],
+.add-movie-form input[type="number"],
+.add-movie-form input[type="date"],
+.add-movie-form select {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.add-movie-form input[type="submit"] {
+    background: #007bff;
+    color: white;
+    padding: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-movie-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* 电影详情页面样式 */
+.show-movie-container {
+    background: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 2em auto;
+    line-height: 1.6;
+}
+
+.show-movie-container h1 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.show-movie-detail {
+    margin-bottom: 1em;
+}
+
+.show-movie-detail label {
+    font-weight: bold;
+    color: #333;
+}
+
+.show-movie-detail span {
+    padding-left: 0.5em;
+    color: #555;
+}
+
+/* 删除按钮样式 */
+.delete-movie-btn {
+    background: #dc3545;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-movie-btn:hover {
+    background-color: #c82333;
+}
+
+
+
+.show-movie-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.movie-details {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.movie-details th,
+.movie-details td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.movie-details th {
+    font-weight: 600;
+}
+
+.delete-form {
+    text-align: center;
+}
+
+.delete-movie-btn {
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-movie-btn:hover {
+    background-color: #c82333;
+}
+
+/* 继承并调整现有的按钮样式 */
+.btn {
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+}
+
+.btn-imdb {
+    background-color: #e3b000;
+}
+
+
+.movie-list-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.movie-list h1 {
+    text-align: center;
+    color: #333;
+}
+
+.movie-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.movie-title {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.movie-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-imdb {
+    background-color: #e6b91e;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Base styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main content styling */
+.movie-list-container {
+    flex-grow: 1; /* This will push the footer down */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.movie-list {
+    width: 100%;
+    max-width: 600px; /* Adjust this to your preference */
+    margin: 0 auto;
+}
+
+.movie-item {
+    background: white;
     margin-bottom: 10px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rg
-    ba(0, 0, 0, 0.12);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.movie-list li {
-    padding: 12px 24px;
-    border-bottom: 1px solid #ddd;
+
+.movie-title {
+    font-weight: bold;
 }
-.movie-list li:last-child {
-    border-bottom:none;
+
+.movie-actions {
+    display: flex;
+    gap: 10px; /* Creates space between buttons */
 }
-.movie-list li:hover {
-    background-color: #f8f9fa;
+
+.btn {
+    padding: 5px 15px; /* Smaller buttons */
+    font-size: 0.8em; /* Smaller text */
+    border-radius: 4px; /* Rounded corners */
 }
-/* 龙猫图片 */
-.totoro {
-display: block;
-margin: 0 auto;
-height: 100px;
+
+/* Footer styles */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
 }
-nav ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #333;
+
+/* Adjust footer to be at the bottom */
+footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
 }
-nav li {
-float: left;
+
+/* Style for buttons and links */
+.btn, .btn-imdb {
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-nav li a {
-display: block;
-color: white;
-text-align: center;
-padding: 8px 12px;
-text-decoration: none;
+
+.btn-delete {
+    background-color: #dc3545;
 }
-nav li a:hover {
-background-color: #111;
+
+.btn:hover, .btn-imdb:hover, .btn-delete:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
 }
-.float-right {
-float: right;
+
+/* Responsive design adjustments */
+@media (max-width: 700px) {
+    .movie-list {
+        width: 90%;
+    }
+    
+    .btn, .btn-imdb, .btn-delete {
+        padding: 10px; /* Larger touch targets on mobile */
+    }
 }
-.imdb {
-font-size: 12px;
-font-weight: bold;
-color: black;
-text-decoration: none;
-background: #F5C518;
-border-radius: 5px;
-padding: 3px 5px;
-}
+
