@@ -1,41 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="show-movie-container">
-    <h1>{{ movie.movie_name }}</h1>
-    <table class="movie-details">
-        <tr>
-            <th>上映日期</th>
-            <td>{{ movie.release_date.strftime('%Y-%m-%d') }}</td>
-        </tr>
-        <tr>
-            <th>国家</th>
-            <td>{{ movie.country }}</td>
-        </tr>
-        <tr>
-            <th>类型</th>
-            <td>{{ movie.genre }}</td>
-        </tr>
-        <tr>
-            <th>导演</th>
-            <td>{{ movie.director }}</td>
-        </tr>
-        <tr>
-            <th>票房</th>
-            <td>{{ box_office.box if box_office else '无数据' }}</td>
-        </tr>
-        <tr>
-            <th>主演</th>
-            <td>
-                {% for actor in actors %}
-                {{ actor.actor_name }}{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            </td>
-        </tr>
-    </table>
-
-    <form action="{{ url_for('delete_movie', movie_id=movie.movie_id) }}" method="post" class="delete-form">
-        <button type="submit" class="delete-movie-btn">删除电影</button>
-    </form>
+<div class="movie-detail-page">
+    <h2>{{ movie.movie_name }}</h2>
+    <ul>
+        <li><strong>上映日期：</strong>{{ movie.release_date.strftime('%Y-%m-%d') }}</li>
+        <li><strong>国家：</strong>{{ movie.country }}</li>
+        <li><strong>类型：</strong>{{ movie.genre }}</li>
+        <li>
+            <strong>导演：</strong>
+            {% for director in directors %}
+            {{ director.actor_name }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </li>
+        <li><strong>票房：</strong>{{ box_office.box if box_office else '无数据' }}</li>
+        <li>
+            <strong>主演：</strong>
+            {% for actor in actors %}
+            {{ actor.actor_name }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </li>
+    </ul>
+    <div style="text-align: center;">
+        <form action="{{ url_for('delete_movie', movie_id=movie.movie_id) }}" method="post" onsubmit="return confirm('确定要删除这部电影吗？')">
+            <button type="submit" class="btn btn-delete">删除电影</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

@@ -1,64 +1,112 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="add-movie-form">
-        <h2>添加新电影</h2>
-        <form action="{{ url_for('add_movie') }}" method="post">
-            <div>
-                <label for="movie_name">电影名称:</label>
-                <input type="text" id="movie_name" name="movie_name" required>
-            </div>
-            <div>
-                <label for="movie_year">上映年份:</label>
-                <input type="number" id="movie_year" name="movie_year" required>
-            </div>
-            <div>
-                <label for="release_date">上映日期:</label>
-                <input type="date" id="release_date" name="release_date" required>
-            </div>
-            <div>
-                <label for="country">国家:</label>
-                <input type="text" id="country" name="country" required>
-            </div>
-            <div>
-                <label for="genre">类型:</label>
-                <input type="text" id="genre" name="genre" required>
-            </div>
-            <div>
-                <label for="box_office">票房:</label>
-                <input type="number" id="box_office" name="box_office" step="0.01">
-            </div>
-            <!-- 新导演添加 -->
-            <div>
-                <label for="new_director_name">新导演姓名:</label>
-                <input type="text" id="new_director_name" name="new_director_name">
-                <label for="new_director_gender">性别:</label>
-                <select id="new_director_gender" name="new_director_gender">
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                </select>
-                <label for="new_director_country">国籍:</label>
-                <input type="text" id="new_director_country" name="new_director_country">
+<div class="create-movie-page"> <!-- 使用 .create-movie-page 类进行样式设置 -->
+    <h2 class="centered-title">添加新电影</h2> <!-- 标题使用 centered-title 类居中显示 -->
+    <form action="{{ url_for('add_movie') }}" method="post" onsubmit="return confirmSubmit()" class="form-group">
+        <div class="form-group">
+            <label for="movie_name">电影名称:</label>
+            <input type="text" id="movie_name" name="movie_name" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="movie_year">上映年份:</label>
+            <input type="number" id="movie_year" name="movie_year" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="release_date">上映日期:</label>
+            <input type="date" id="release_date" name="release_date" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="country">国家:</label>
+            <input type="text" id="country" name="country" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="genre">类型:</label>
+            <input type="text" id="genre" name="genre" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="box_office">票房（亿）:</label>
+            <input type="number" id="box_office" name="box_office" step="0.01" class="form-control">
+        </div>
+
+            <div id="directors">
+                <label>导演:</label>
+                <div class="director">
+                    <label>导演姓名:</label>
+                    <input type="text" name="new_director_name[]">
+                    <label>导演性别:</label>
+                    <select name="new_director_gender[]">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                    <label>导演国籍:</label>
+                    <input type="text" name="new_director_country[]">
+                </div>
+                <button type="button" onclick="addDirector()">添加更多导演</button>
             </div>
 
             <!-- 新主演添加 -->
-            <div>
-                <label for="new_actor_name">新主演姓名:</label>
-                <input type="text" id="new_actor_name" name="new_actor_name">
-                <label for="new_actor_gender">性别:</label>
-                <select id="new_actor_gender" name="new_actor_gender">
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                </select>
-                <label for="new_actor_country">国籍:</label>
-                <input type="text" id="new_actor_country" name="new_actor_country">
+            <div id="actors">
+                <label>主演:</label>
+                <div class="actor">
+                    <label>主演姓名:</label>
+                    <input type="text" name="new_actor_name[]">
+                    <label>主演性别:</label>
+                    <select name="new_actor_gender[]">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                    <label>主演国籍:</label>
+                    <input type="text" name="new_actor_country[]">
+                </div>
+                <button type="button" onclick="addActor()">添加更多主演</button>
             </div>
 
-            <div>
-                <input type="submit" value="添加电影">
+            <div class="form-group">
+                <input type="submit" value="添加电影" class="btn btn-login"> <!-- 使用 .btn-login 类进行按钮样式设置 -->
             </div>
         </form>
+        <script>
+            function confirmSubmit() {
+                return confirm('确定要添加这部电影吗？');
+            }
+        </script>
     </div>
 </div>
+
+<script>
+    function addDirector() {
+        var directorsDiv = document.getElementById('directors');
+        var newDirectorDiv = document.createElement('div');
+        newDirectorDiv.className = 'director';
+        newDirectorDiv.innerHTML = `
+            <input type="text" name="new_director_name[]">
+            <select name="new_director_gender[]">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <input type="text" name="new_director_country[]">
+        `;
+        directorsDiv.appendChild(newDirectorDiv);
+    }
+
+    function addActor() {
+        var actorsDiv = document.getElementById('actors');
+        var newActorDiv = document.createElement('div');
+        newActorDiv.className = 'actor';
+        newActorDiv.innerHTML = `
+            <input type="text" name="new_actor_name[]">
+            <select name="new_actor_gender[]">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <input type="text" name="new_actor_country[]">
+        `;
+        actorsDiv.appendChild(newActorDiv);
+    }
+</script>
 {% endblock %}
+
+
+
+

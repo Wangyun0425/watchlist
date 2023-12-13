@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="genre-search-container">
+    <h2>按类别查询电影</h2>
+    <form method="get" action="{{ url_for('search_by_genre') }}">
+        <select name="genre">
+            <option value="">选择类别</option>
+            {% for genre in genres %}
+            <option value="{{ genre }}" {% if selected_genre == genre %}selected{% endif %}>{{ genre }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="搜索">
+    </form>
+
+    {% if movies %}
+    <div class="movie-list">
+        <h3>搜索结果</h3>
+        <ul>
+            {% for movie in movies %}
+            <li>{{ movie.movie_name }} - {{ movie.year }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -12,19 +12,28 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Movie Management System</h1>
-        </header>
-        <nav>
-            <!-- Navigation items if needed -->
-        </nav>
-        <main>
-            {% block content %}{% endblock %}
-        </main>
-        <footer>
-            <p>&copy; 2023 Movie Search. All rights reserved.</p>
-        </footer>
-    </div>
+  <!-- 插入到页面标题上方 -->
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+    <header>
+        <h1>Movie Management System</h1>
+    </header>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">首页</a></li>
+            <li><a href="{{ url_for('movie_list') }}">电影列表</a></li>
+            <li><a href="{{ url_for('actor_list') }}">演员列表</a></li>
+            <li><a href="{{ url_for('box_office_list') }}">票房列表</a></li>
+            <li><a href="{{ url_for('search_by_genre') }}">类别查询</a></li>
+            <li><a href="{{ url_for('search_by_year') }}">上映时间查询</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
 </body>
 </html>
+
+
+
+

@@ -1,15 +1,24 @@
-<!-- movie_list.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h1>电影列表</h1>
-    <ul>
+<div class="main-section">
+    <ul class="movie-list">
+        <h1 class="centered-title">电影列表</h1>
         {% for movie in movies %}
             <li>
-                <a href="{{ url_for('show_movie', movie_id=movie.movie_id) }}">{{ movie.movie_name }}</a>
+                <!-- 将电影名称作为超链接 -->
+                <a href="{{ url_for('show_movie', movie_id=movie.movie_id) }}" class="movie-info">
+                    {{ movie.movie_name }} ({{ movie.year }})
+                </a>
+                <!-- 删除按钮 -->
+                <div class="btn-container">
+                    <form action="{{ url_for('delete_movie', movie_id=movie.movie_id) }}" method="post" onsubmit="return confirm('确定要删除这部电影吗？')">
+                        <button type="submit" class="btn btn-delete">删除</button>
+                    </form>
+                </div>
             </li>
         {% endfor %}
     </ul>
 </div>
 {% endblock %}
+

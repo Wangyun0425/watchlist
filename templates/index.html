@@ -1,32 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="search-form">
-    <h2>Function One: Movie Add</h2>
-    <div class="add-movie-link">
-        <a href="{{ url_for('add_movie') }}" class="btn">Add New Movies</a>
+<section class="main-section">
+  <div class="system-intro">
+    <p>本电影管理系统包含电影录入，电影查询，演员查询、电影分析等功能</p>
+    <div class="intro-buttons">
+      <a href="{{ url_for('add_movie') }}" class="intro-btn">电影录入</a>
+      <a href="{{ url_for('search_movies') }}" class="intro-btn">电影查询</a>
+      <a href="{{ url_for('search_actors') }}" class="intro-btn">演员查询</a>
+      <a href="{{ url_for('box_office_analysis') }}" class="intro-btn">票房分析</a>
     </div>
-
-    <h2>Function Two: Movie Query</h2>
-    <form action="{{ url_for('search_movies') }}" method="post">
-        <input type="text" id="movie_search" name="movie_search" placeholder="Enter movie title" autofocus>
-        <button type="submit" class="btn">Search Movies</button>
-    </form>
-    <h2>Function Three: Actor Query</h2>
-    <form action="{{ url_for('search_actors') }}" method="post">
-        <input type="text" id="actor_search" name="actor_search" placeholder="Enter actor name">
-        <button type="submit" class="btn">Search Actors</button>
-    </form>
-    
-    <h2>Function Four: Box Office Analysis</h2>
-    <div class="box-office-analysis-link">
-        <a href="{{ url_for('box_office_analysis') }}" class="btn">Box Office Analysis</a>
-    </div>
-    
-    <h2>Function Five: View Movie List</h2>
-    <div class="view-movie-list-link">
-        <a href="{{ url_for('movie_list') }}" class="btn">View Movie List</a>
-    </div>
-</div>
+  </div>
+  <img src="{{ url_for('static', filename='wy.jpeg') }}" alt="Main Image" class="main-image">
+</section>
 {% endblock %}
 

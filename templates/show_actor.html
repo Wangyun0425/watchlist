@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="actor-detail-page">
+    <h2>{{ actor.actor_name }}</h2>
+    <ul>
+        <li><strong>性别：</strong>{{ actor.gender }}</li>
+        <li><strong>国家：</strong>{{ actor.country }}</li>
+        <li>
+            <strong>作为主演的电影：</strong>
+            {% if movies_as_actor %}
+                {% for movie in movies_as_actor %}
+                {{ movie.movie_name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            {% else %}
+                暂无主演电影信息
+            {% endif %}
+        </li>
+        <li>
+            <strong>作为导演的电影：</strong>
+            {% if movies_as_director %}
+                {% for movie in movies_as_director %}
+                {{ movie.movie_name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            {% else %}
+                暂无导演电影信息
+            {% endif %}
+        </li>
+    </ul>
+    <div style="text-align: center;">
+        <form action="{{ url_for('delete_actor', actor_id=actor.actor_id) }}" method="post" onsubmit="return confirm('确定要删除这位演员吗？')">
+            <button type="submit" class="btn btn-delete">删除演员</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

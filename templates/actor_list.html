@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-section">
+    <ul class="actor-list">
+        <h1 class="centered-title">演员列表</h1>
+        {% for actor in actors %}
+            <li>
+                <a href="{{ url_for('show_actor', actor_id=actor.actor_id) }}" class="actor-info">
+                    {{ actor.actor_name }}
+                </a>
+                <div class="btn-container">
+                    <form action="{{ url_for('delete_actor', actor_id=actor.actor_id) }}" method="post" onsubmit="return confirm('确定要删除这位演员吗？')">
+                        <button type="submit" class="btn btn-delete">删除</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

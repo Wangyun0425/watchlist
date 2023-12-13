@@ -4,15 +4,25 @@
 <head>
     <!-- 其他头部信息 -->
     <title>Box Office Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <h1 class="centered-title">票房部分分析</h1>
 </head>
 <body>
     <div class="chart-container">
+        <h2>票房前十的电影</h2>
+        <div class="canvas-wrapper">
+            <canvas id="topMoviesChart"></canvas>
+        </div>
+        <!-- 现有图表 -->
+        <h2>按类型统计的票房</h2>
         <div class="canvas-wrapper">
             <canvas id="genreChart"></canvas>
         </div>
+        <h2>按国家统计的票房</h2>
         <div class="canvas-wrapper">
             <canvas id="countryChart"></canvas>
         </div>
+        <h2>按电影统计的票房</h2>
         <div class="canvas-wrapper">
             <canvas id="yearChart"></canvas>
         </div>
@@ -21,6 +31,23 @@
     <!-- 加载 Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // 票房前十的电影图表
+        var topMoviesCtx = document.getElementById('topMoviesChart').getContext('2d');
+        var topMoviesChart = new Chart(topMoviesCtx, {
+            type: 'bar',
+            data: {
+                labels: {{ top_movie_names | tojson }},
+                datasets: [{
+                    label: 'Top Movies Box Office',
+                    data: {{ top_movie_box_offices | tojson }},
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+
        // 创建类型票房图表
         var genreCtx = document.getElementById('genreChart').getContext('2d');
         var genreChart = new Chart(genreCtx, {

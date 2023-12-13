@@ -1,434 +1,888 @@
-/* 基本设置 */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f4f4f4; /* 更柔和的背景色 */
-}
+/* 页面整体 */
+body {
 
-/* 头部样式 */
+    font-family: Helvetica, Arial, sans-serif;
+}
 header {
-    background: #0056b3; /* 更柔和的蓝色 */
-    color: white;
-    padding: 0.5em 0; /* 减少填充 */
-    text-align: center;
-    width: 100%;
-}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
 
+}
+header img {
+    width: 70px; /* 或您希望的任何尺寸 */
+    height: auto; /* 保持纵横比 */
+}
 header h1 {
-    margin: 0.5em 0; /* 减少外边距 */
+    font-size: 40px; /* 调整字体大小 */
+    letter-spacing: 4px; /* 增加字母间距 */
+    margin-left: 20px; /* 增加logo与文字之间的距离 */
+    flex-grow: 1; /* 让h1元素占据剩余空间 */
+}
+.main-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 25px;
 }
 
-/* 功能标题样式 */
-h2 {
-    color: #333;
-    font-size: 1.2em;
-    margin-top: 0.5em; /* 减少外边距 */
-    margin-bottom: 0.5em; /* 减少外边距 */
+.system-intro {
+    max-width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto; /* 调整为自动高度 */
 }
 
-/* 搜索表单样式 */
-.search-form {
-    max-width: 600px;
-    margin: 1em auto; /* 减少外边距 */
-    padding: 1em; /* 减少填充 */
-    background: white;
-    border: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
+.system-intro h2 {
+    color: #343a40;
+    font-size: 28px;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 10px; /* 减少与下方文本框的间距 */
 }
 
-.search-form h2 {
-    margin-bottom: 0.5em; /* 减少外边距 */
+.system-intro p {
+    background-color: #f8f8f8; /* 浅灰色背景 */
+    color: #343a40;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 10px; /* 文本框内边距 */
+    border: 1px solid #d9d9d9; /* 浅灰色边框 */
+    text-indent: 2em; /* 首行缩进 */
+    margin-bottom: 60px; /* 增加与按钮的间距 */
 }
 
-/* 输入框样式 */
-input[type="text"] {
-    width: 100%;
-    padding: 0.75em;
-    margin-bottom: 0.5em; /* 减少外边距 */
+.intro-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 按钮居中对齐 */
+    margin-top: auto; /* 将按钮推到底部 */
+}
+
+.intro-btn {
+    background-color: #343a40; /* 深灰色填充 */
+    color: white; /* 白色字体 */
+    padding: 10px 15px;
+    margin: 15px 0;
+    text-decoration: none;
     border-radius: 5px;
-    border: 1px solid #ccc; /* 更轻的边框色 */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+    text-align: center;
+    width: 80%; /* 按钮宽度调小 */
+    font-weight: bold; /* 字体加粗 */
+    align-self: center; /* 按钮居中对齐 */
 }
 
-/* 按钮样式 */
-.btn {
-    width: 100%;
-    padding: 0.75em;
-    margin-bottom: 0.5em; /* 减少外边距 */
-    color: white;
-    background: #007bff; /* 标准蓝色 */
+.intro-btn:hover {
+    background-color: #23272b;
+}
+
+.main-image {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+
+/* 页脚 */
+footer {
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
+}
+.centered-title {
+  text-align: center;      /* 设置文本居中 */
+  background-color: #f0f0f0; /* 设置背景颜色为浅灰色 */
+  padding: 10px;           /* 在标题周围添加10像素的填充 */
+      /* 设置顶部外边距为20像素，以提供一些空间 */
+  border-radius: 5px;      /* 设置边框圆角为5像素 */
+}
+}
+
+
+/* 电影列表 */
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    margin: 0 auto; /* 自动外边距实现居中 */
+    width: 50%; /* 列表宽度为页面的 70% */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.movie-list li {
+    padding: 12px 24px;
+    border-bottom: 1px solid #ddd;
+    display: flex; /* 使用 flex 布局 */
+    justify-content: space-between; /* 项目之间的空间均匀分布 */
+    align-items: center; /* 垂直居中 */
+}
+
+.movie-list li:last-child {
+    border-bottom:none;
+}
+
+.movie-list li:hover {
+    background-color: #f8f9fa;
+}
+
+/* 新增样式：调整每个项的样式 */
+.movie-list li span {
+    flex: 1;
+    margin-right: 10px;
+}
+/* 电影信息左对齐 */
+.movie-list li a {
+    color: #343a40;
+    text-decoration: none;
+    flex-grow: 1; /* 允许链接填充可用空间 */
+}
+
+.movie-list a:visited {
+    color: #343a40; /* 访问后的颜色也是深灰色 */
+}
+/* 新增样式：调整hover效果 */
+.movie-list li:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+/* 在 movie-list 中的按钮样式 */
+.movie-list .btn, .movie-list .btn-delete {
+    padding: 8px 15px; /* 统一按钮的填充 */
+    margin-left: 10px;
+    background-color: #343a40; /* 深灰色背景 */
+    color: white; /* 白色字体 */
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none; /* 移除文本下划线 */
+    display: inline-block; /* 确保按钮宽度一致 */
+    width: 80px; /* 设置固定宽度 */
+    text-align: center; /* 文本居中 */
+}
+
+.movie-list .btn:hover, .movie-list .btn-delete:hover {
+    background-color: #2c3036; /* 悬停时更深的灰色 */
+}
+/* 用于右对齐按钮的额外容器 */
+.movie-list .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+/* 演员列表 */
+.actor-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    margin: 0 auto; /* 自动外边距实现居中 */
+    width: 50%; /* 列表宽度为页面的 70% */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.actor-list li {
+    padding: 12px 24px;
+    border-bottom: 1px solid #ddd;
+    display: flex; /* 使用 flex 布局 */
+    justify-content: space-between; /* 项目之间的空间均匀分布 */
+    align-items: center; /* 垂直居中 */
+}
+
+.actor-list li:last-child {
+    border-bottom:none;
+}
+
+.actor-list li:hover {
+    background-color: #f8f9fa;
+}
+
+/* 新增样式：调整每个项的样式 */
+.actor-list li span {
+    flex: 1;
+    margin-right: 10px;
+}
+/* 电影信息左对齐 */
+.actor-list li a {
+    color: #343a40;
+    text-decoration: none;
+    flex-grow: 1; /* 允许链接填充可用空间 */
+}
+
+.actor-list a:visited {
+    color: #343a40; /* 访问后的颜色也是深灰色 */
+}
+/* 新增样式：调整hover效果 */
+.actor-list li:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+/* 在 actor-list 中的按钮样式 */
+.actor-list .btn {
+    padding: 8px 15px; /* 统一按钮的填充 */
+    margin-left: 10px;
+    background-color: #343a40; /* 深灰色背景 */
+    color: white; /* 白色字体 */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none; /* 移除文本下划线 */
+    display: inline-block; /* 确保按钮宽度一致 */
+    width: 80px; /* 设置固定宽度 */
+    text-align: center; /* 文本居中 */
+}
+
+.actor-list .btn:hover {
+    background-color: #2c3036; /* 悬停时更深的灰色 */
+}
+/* 用于右对齐按钮的额外容器 */
+.actor-list .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+h2 {
+    margin-top: 0;
+    /* 保留其他样式不变 */
+}
+nav {
+    display: flex;
+    justify-content: space-between; /* 使导航项两端对齐 */
+    background-color: #333; /* 背景色 */
+    padding: 0 20px; /* 在导航两端增加一些内边距 */
+}
+
+.nav-links, .auth-links {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li, .auth-links li {
+    padding: 14px 20px;
+}
+
+.nav-links a, .auth-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px; /* 增加字体大小 */
+}
+
+}
+.float-right {
+    float: right;
+}
+
+
+
+/* 覆盖某些浏览器对 input 元素定义的字体 */
+input[type=submit] {
+    font-family: inherit;
+}
+
+input[type=text] {
+    border: 1px solid #ddd;
+}
+
+input[name=year] {
+    width: 50px;
+}
+
+.btn {
+    font-family: Arial, sans-serif; /* 示例字体 */
+    font-weight: normal; /* 示例字重 */
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 1px solid #555555;
     border-radius: 5px;
 }
 
 .btn:hover {
-    background-color: #0056b3; /* 深蓝色 */
-}
-
-/* 页脚样式 */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 1em 0; /* 减少填充 */
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* 响应式设计 */
-@media (max-width: 700px) {
-    .search-form {
-        padding: 1em;
-        width: 90%;
-    }
-    
-    .container {
-        padding: 0.5em;
-    }
-    
-    .btn, input[type="text"] {
-        width: 100%; /* 在移动设备上全
-/* style.css 或相应的 CSS 文件 */
-        
-.chart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-}
-
-.canvas-wrapper {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px 0;
-    
-}
-
-
-/* 表单样式 */
-.add-movie-form {
-    background: white;
-    padding: 2em;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    max-width: 600px;
-    margin: 2em auto;
-}
-
-.add-movie-form h2 {
-    text-align: center;
-    color: #0056b3;
-}
-
-.add-movie-form div {
-    margin-bottom: 1em;
-}
-
-.add-movie-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    color: #333;
-}
-
-.add-movie-form input[type="text"],
-.add-movie-form input[type="number"],
-.add-movie-form input[type="date"],
-.add-movie-form select {
-    width: 100%;
-    padding: 0.75em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.add-movie-form input[type="submit"] {
-    background: #007bff;
-    color: white;
-    padding: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-movie-form input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* 电影详情页面样式 */
-.show-movie-container {
-    background: white;
-    padding: 2em;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    max-width: 800px;
-    margin: 2em auto;
-    line-height: 1.6;
-}
-
-.show-movie-container h1 {
-    color: #0056b3;
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-.show-movie-detail {
-    margin-bottom: 1em;
-}
-
-.show-movie-detail label {
-    font-weight: bold;
-    color: #333;
-}
-
-.show-movie-detail span {
-    padding-left: 0.5em;
-    color: #555;
-}
-
-/* 删除按钮样式 */
-.delete-movie-btn {
-    background: #dc3545;
-    color: white;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.delete-movie-btn:hover {
-    background-color: #c82333;
-}
-
-
-
-.show-movie-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.movie-details {
-    width: 100%;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-}
-
-.movie-details th,
-.movie-details td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #eee;
-}
-
-.movie-details th {
-    font-weight: 600;
-}
-
-.delete-form {
-    text-align: center;
-}
-
-.delete-movie-btn {
-    padding: 10px 15px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.delete-movie-btn:hover {
-    background-color: #c82333;
-}
-
-/* 继承并调整现有的按钮样式 */
-.btn {
-    padding: 10px 15px;
-    border-radius: 4px;
     text-decoration: none;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.alert {
+    position: relative;
+    padding: 7px;
+    margin: 7px 0;
+    border: 1px solid transparent;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 5px;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"] {
+
+    padding: 8px;
+    margin: 3px 0 5px 0;
     display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="date"]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.welcome {
+  text-align: center;
+  margin-top: 30px; /* 调整上方边距以使标题垂直居中 */
+}
+
+.welcome h1 {
+  font-size: 36px; /* 设置标题字体大小 */
+  color: #333; /* 设置标题颜色 */
+  /* 可以根据需要添加其他样式，比如加粗、斜体等 */
+}
+
+.intro {
+    font-size: 16px; /* 设置字体大小为16像素，根据需要调整 */
+    color: #333; /* 设置文字颜色，可以根据需要调整 */
+    margin-top: 10px; /* 设置上边距，根据需要调整 */
+}
+
+.modal {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: absolute;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    display: none;
+}
+
+
+/* 搜索框样式 */
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.search-box input[type="text"] {
+    width: 40%; /* 调整为所需宽度 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     margin-right: 10px;
 }
 
-.btn-edit {
-    background-color: #ffc107;
-}
-
-.btn-imdb {
-    background-color: #e3b000;
-}
-
-
-.movie-list-container {
-    width: 80%;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.movie-list h1 {
-    text-align: center;
-    color: #333;
-}
-
-.movie-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eaeaea;
-}
-
-.movie-title {
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.movie-actions {
-    display: flex;
-    align-items: center;
-}
-
-.btn {
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    text-decoration: none;
-    font-size: 0.9rem;
+/* 搜索按钮样式 */
+.search-box input[type="submit"] {
+    padding: 10px 15px;
+    background-color: #343a40;
+    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s;
 }
 
-.btn-edit {
-    background-color: #ffc107;
-    color: #fff;
+.search-box input[type="submit"]:hover {
+    background-color: #23272b;
+}
+/* 搜索结果样式 */
+.search-result {
+    width: 40%;
+    margin: 20px auto; /* 上下保持原样，左右设置为 auto 实现水平居中 */
+    padding: 10px;
+    border: 1px solid #ddd; /* 可选的边框 */
+    text-align: center; /* 添加居中对齐 */
+}
+
+.search-result a {
+    display: inline-block;
+    margin-right: 10px; /* 添加右边距以分隔链接 */
+    color: #343a40; /* 深灰色，与搜索按钮相同 */
+    padding: 5px;
+    text-decoration: none; /* 移除下划线 */
+}
+
+.search-result a:hover {
+    background-color: #f8f9fa; /* 悬停时的背景色 */
+
+}
+
+
+.login-container {
+    width: 50%; /* 页面宽度的 50% */
+    margin: 50px auto; /* 上下保持 50px 的空间，左右自动，用于居中 */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    text-align: center; /* 内容居中对齐 */
+}
+
+.login-title {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.login-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form .form-group input[type="text"],
+.login-form .form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* 确保内边距和边框不会影响到元素的总宽度 */
+}
+
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #343a40; /* 深灰色 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #23272b; /* 悬停时更深的灰色 */
+}
+
+
+/* 专门为 movie_detail.html 页面设计的样式 */
+.movie-detail-page {
+    max-width: 400px; /* 控制页面宽度 */
+    margin: 20px auto; /* 居中显示 */
+    padding: 20px; /* 内边距 */
+    background-color: #f9f9f9; /* 浅灰色背景 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+    color: #343a40; /* 字体颜色 */
+}
+
+.movie-detail-page h2, .movie-detail-page h3 {
+    text-align: center; /* 标题居中 */
+    color: #343a40; /* 标题颜色 */
+}
+
+.movie-detail-page p, .movie-detail-page ul {
+    text-align: center;
+
+    color: #343a40; /* 文本颜色 */
+}
+
+.movie-detail-page ul {
+    list-style-type: none; /* 去除默认列表样式 */
+    padding: 0;
+}
+.movie-detail-page ul li {
+    padding: 10px 0; /* 增加行距 */
 }
 
 .btn-delete {
-    background-color: #dc3545;
-    color: #fff;
+    display: inline-block; /* 使按钮可居中 */
+    margin: 0 auto; /* 自动边距使其居中 */
+    /* 其它样式保持不变 */
 }
 
-.btn-imdb {
-    background-color: #e6b91e;
-    color: #fff;
+/* 如果已有 .btn 类定义，只需添加下面这行 */
+.btn { text-align: center; }
+
+
+/* 专门为 actor_detail.html 页面设计的样式 */
+.actor-detail-page {
+    max-width: 400px; /* 控制页面宽度 */
+    margin: 20px auto; /* 居中显示 */
+    padding: 20px; /* 内边距 */
+    background-color: #f9f9f9; /* 浅灰色背景 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+    color: #343a40; /* 字体颜色 */
 }
 
-.btn:hover {
-    opacity: 0.9;
+.actor-detail-page h2, .actor-detail-page h3 {
+    text-align: center; /* 标题居中 */
+    color: #343a40; /* 标题颜色 */
 }
 
-/* Base styles */
-body, html {
-    margin: 0;
+.actor-detail-page p, .actor-detail-page ul {
+    text-align: center;
+    color: #343a40; /* 文本颜色 */
+}
+
+.actor-detail-page ul {
+    list-style-type: none; /* 去除默认列表样式 */
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
-/* Main content styling */
-.movie-list-container {
-    flex-grow: 1; /* This will push the footer down */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
 
-.movie-list {
-    width: 100%;
-    max-width: 600px; /* Adjust this to your preference */
-    margin: 0 auto;
-}
-
-.movie-item {
-    background: white;
-    margin-bottom: 10px;
-    padding: 10px;
+.btn-douban {
+    display: block;
+    margin: 20px auto;
+    background-color: #343a40;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    transition: background-color 0.3s;
+    font-weight: bold; /* 文本加粗 */
+    width: auto; /* 自动宽度，根据文本长度调整 */
+    max-width: 200px; /* 最大宽度限制，防止按钮过宽 */
 }
 
-.movie-title {
+.btn-douban:hover {
+    background-color: #2c3036;
+}
+
+
+
+/*演员查询页面*/
+/* 演员搜索结果样式 */
+.search-actors-result {
+    width: 40%;
+    margin: 20px auto; /* 上下保持原样，左右设置为 auto 实现水平居中 */
+    padding: 10px;
+    border: 1px solid #ddd; /* 可选的边框 */
+    text-align: center; /* 添加居中对齐 */
+}
+
+.search-actors-result h2 {
+    color: #343a40; /* 深灰色，与搜索按钮相同 */
+}
+
+.search-actors-result p {
+    margin-bottom: 8px; /* 底部边距 */
+}
+
+.search-actors-result a {
+    display: inline-block;
+    margin-right: 10px; /* 添加右边距以分隔链接 */
+    color: #343a40; /* 深灰色，与搜索按钮相同 */
+    padding: 5px;
+    text-decoration: none; /* 移除下划线 */
+}
+
+.search-actors-result a:hover {
+    background-color: #f8f9fa; /* 悬停时的背景色 */
+}
+
+
+
+/* 专门为 actor_list.html 页面设计的样式 */
+.actor-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.actor-list li {
+    padding: 12px 24px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actor-list li:last-child {
+    border-bottom: none;
+}
+
+.actor-list a {
+    text-decoration: none;
+    color: #343a40;
     font-weight: bold;
 }
 
-.movie-actions {
+.actor-list .btn-container {
     display: flex;
-    gap: 10px; /* Creates space between buttons */
+    justify-content: flex-end;
 }
 
-.btn {
-    padding: 5px 15px; /* Smaller buttons */
-    font-size: 0.8em; /* Smaller text */
-    border-radius: 4px; /* Rounded corners */
-}
-
-/* Footer styles */
-footer {
-    background: #333;
-    color: white;
+/* 专门为 show_actor.html 页面设计的样式 */
+.actor-detail-page {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
-    padding: 1em 0;
-    width: 100%;
+    color: #343a40;
 }
 
-/* Adjust footer to be at the bottom */
-footer {
-    margin-top: auto; /* Pushes the footer to the bottom */
+.actor-detail-page h2 {
+    margin-bottom: 20px;
 }
 
-/* Style for buttons and links */
-.btn, .btn-imdb {
-    text-decoration: none;
+.actor-detail-page ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.actor-detail-page ul li {
+    padding: 10px 0;
+}
+
+
+/* 票房列表 */
+.box-office-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto; /* 自动外边距实现居中 */
+    width: 40%; /* 列表宽度调整为页面的 60% */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.box-office-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.box-office-list table {
+    width: 100%; /* 表格宽度设置为100% */
+    border-collapse: collapse; /* 去除表格间的空隙 */
+}
+
+.box-office-list th, .box-office-list td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.box-office-list th {
+    background-color: #f8f8f8; /* 表头背景色 */
+}
+
+.box-office-list tr:nth-child(even) {
+    background-color: #f2f2f2; /* 隔行换色 */
+}
+
+.box-office-list tr:hover {
+    background-color: #f8f9fa; /* 悬停时行背景色 */
+}
+
+.box-office-list td {
+    color: #343a40; /* 字体颜色 */
+}
+
+/* 票房列表标题样式 */
+.box-office-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+
+
+/* 电影类别搜索样式 */
+.genre-search-container {
+    text-align: center;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.genre-search-container form {
+    margin-left: 20px; /* 或适当的值，以使它们与标题对齐 */
+    margin-bottom: 20px;
+}
+
+.genre-search-container select {
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.genre-search-container input[type="submit"] {
+    margin-left: 20px; /* 或适当的值，以使它们与标题对齐 */
+    padding: 5px 10px;
+    background-color: #343a40;
     color: white;
-    background-color: #007bff;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+.genre-search-container input[type="submit"]:hover {
+    background-color: #23272b;
+}
+
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.movie-list h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.movie-list ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.movie-list ul li:last-child {
+    border-bottom: none;
+}
+
+.movie-list ul li:hover {
+    background-color: #f8f9fa;
+}
+/* 电影类别搜索样式 */
+.year-search-container {
+    text-align: center;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.year-search-container form {
+    margin-left: 20px; /* 或适当的值，以使它们与标题对齐 */
+    margin-bottom: 20px;
+}
+
+.year-search-container select {
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.year-search-container input[type="submit"] {
+    margin-left: 20px; /* 或适当的值，以使它们与标题对齐 */
+    padding: 5px 10px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.year-search-container input[type="submit"]:hover {
+    background-color: #23272b;
+}
+
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.movie-list h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.movie-list ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.movie-list ul li:last-child {
+    border-bottom: none;
+}
+
+.movie-list ul li:hover {
+    background-color: #f8f9fa;
+}
+
+
+.canvas-wrapper {
+    width: 70%; /* 或您想要的任何百分比 */
+    margin: auto; /* 使图表居中 */
+    max-width: 800px; /* 或任何最大宽度 */
+    height: auto; /* 高度自适应 */
+}
+
+.chart-container h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+canvas {
+    width: 100% !important;
+    max-height: 800px;
+}
+
+/* 其他样式 */
+/* 专门为 create_movie_info.html 页面设计的样式 */
+.create-movie-page {
+    max-width: 800px; /* 控制页面宽度 */
+    margin: 0 auto; /* 居中显示 */
+    padding: 20px; /* 内边距 */
+    background-color: #f9f9f9; /* 浅灰色背景 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+    color: #343a40; /* 字体颜色 */
+}
+
+.create-movie-page h2 {
+    text-align: center; /* 标题居中 */
+    color: #343a40; /* 标题颜色 */
+}
+
+.create-movie-page .form-group {
+    margin-bottom: 15px;
+}
+
+.create-movie-page .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #343a40; /* 标签颜色 */
+}
+
+.create-movie-page .form-group input[type="text"],
+.create-movie-page .form-group input[type="date"],
+.create-movie-page .form-group input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff; /* 输入框背景色 */
+}
+
+.create-movie-page .form-group input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #343a40; /* 深灰色按钮 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
     transition: background-color 0.3s;
 }
 
-.btn-delete {
-    background-color: #dc3545;
+.create-movie-page .form-group input[type="submit"]:hover {
+    background-color: #23272b; /* 按钮悬停时的背景色 */
 }
 
-.btn:hover, .btn-imdb:hover, .btn-delete:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
-}
-
-/* Responsive design adjustments */
-@media (max-width: 700px) {
-    .movie-list {
-        width: 90%;
-    }
-    
-    .btn, .btn-imdb, .btn-delete {
-        padding: 10px; /* Larger touch targets on mobile */
-    }
-}
 
